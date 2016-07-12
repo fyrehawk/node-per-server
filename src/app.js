@@ -15,7 +15,9 @@ var wss = new WebSocketServer({server: server});
 
 wss.on('connection', function(ws) {
     ws.on('message', function(data, flags) {
-        console.log(data);
+        
+        console.log(JSON.stringify(data));
+        ws.send("{\"msg\":\"rcvd\"}");
     });
     
     ws.on('close', function() {
